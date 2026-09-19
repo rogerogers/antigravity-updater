@@ -6,9 +6,10 @@ A robust, one-click Linux upgrade script for **Google Antigravity** (desktop app
 
 - **Official Source Only**: Dynamically resolves the latest release directly from `https://antigravity.google/download` and Google Cloud Storage (`storage.googleapis.com/antigravity-public`).
 - **Smart Version Comparison**: Checks your local version against the latest remote release before downloading, avoiding redundant 170MB+ transfers when already up-to-date.
+- **Automatic Changelog Display**: Automatically displays formatted release notes (new features, improvements, fixes) after completing an update.
 - **SUID Sandbox Setup**: Automatically configures `chrome-sandbox` with root ownership and `4755` permissions for secure, issue-free Chromium runtime.
 - **Safety Backup**: Creates an atomic backup (`/usr/local/antigravity.bak`) of your existing install before applying updates.
-- **Force Upgrade**: Supports `--force` / `-f` flag to reinstall or repair existing versions.
+- **Force Upgrade & Inspection**: Supports `--force` / `-f` to reinstall, `--changelog` / `-c` to inspect release notes directly, and `--no-changelog` to silence post-update changelog output.
 
 ## Installation
 
@@ -36,10 +37,24 @@ Check and upgrade Antigravity:
 update-antigravity
 ```
 
+View release notes / changelog without upgrading:
+
+```bash
+update-antigravity --changelog
+# or
+update-antigravity -c
+```
+
 Force reinstall even if already on the latest version:
 
 ```bash
 update-antigravity --force
+```
+
+Update without displaying release notes:
+
+```bash
+update-antigravity --no-changelog
 ```
 
 Pass a custom archive URL:
